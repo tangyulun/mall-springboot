@@ -33,10 +33,10 @@ public class UserController {
         System.out.println(user);
        return userMapper.insertSelective(user);
     }
-    @PostMapping("/del")
-    public int delUser(@RequestParam("id") Integer id) {
-        return userMapper.deleteByPrimaryKey(id);
-    }
+//    @PostMapping("/del")
+//    public int delUser(@RequestParam("id") Integer id) {
+//        return userMapper.deleteByPrimaryKey(id);
+//    }
 
 
 }

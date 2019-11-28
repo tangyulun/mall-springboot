@@ -1,7 +1,5 @@
 package com.springboot.mall.model;
 
-import java.util.Date;
-
 public class User {
     /**
      * 
@@ -11,22 +9,12 @@ public class User {
     /**
      * 
      */
-    private Integer status;
-
-    /**
-     * 
-     */
-    private String userName;
+    private String username;
 
     /**
      * 
      */
     private String password;
-
-    /**
-     * 
-     */
-    private Date createDate;
 
     /**
      * 
@@ -46,34 +34,18 @@ public class User {
 
     /**
      * 
-     * @return status 
+     * @return username 
      */
-    public Integer getStatus() {
-        return status;
+    public String getUsername() {
+        return username;
     }
 
     /**
      * 
-     * @param status 
+     * @param username 
      */
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    /**
-     * 
-     * @return user_name 
-     */
-    public String getUserName() {
-        return userName;
-    }
-
-    /**
-     * 
-     * @param userName 
-     */
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
     /**
@@ -90,21 +62,5 @@ public class User {
      */
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
-    }
-
-    /**
-     * 
-     * @return create_date 
-     */
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    /**
-     * 
-     * @param createDate 
-     */
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
     }
 }

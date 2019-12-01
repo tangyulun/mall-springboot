@@ -46,5 +46,5 @@ public interface UserMapper {
      * @param password
      * @return
      */
-    int toLogin(@Param("username") String username, @Param("password") String password);
+    Integer toLogin(@Param("username") String username, @Param("password") String password);
 }

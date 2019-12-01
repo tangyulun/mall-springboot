@@ -33,11 +33,12 @@ public class TestController {
         return umsMemberLevel;
     }
     @ApiOperation("登录接口")
-    @RequestMapping("testLogin")
+    @PostMapping("testLogin")
+    @ResponseBody
     public String toLogin(String username,String password){
         Integer userLogin = userMapper.toLogin(username,password);
         System.out.println(userLogin);
-        if (username !=null && password !=null && userLogin ==1){
+        if (username !=null && password !=null && userLogin.equals(userLogin)){
             return "success";
         }else {
             return "error";

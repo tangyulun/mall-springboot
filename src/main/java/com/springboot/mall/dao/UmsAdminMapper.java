@@ -2,6 +2,8 @@ package com.springboot.mall.dao;
 
 import com.springboot.mall.model.UmsAdmin;
 
+import java.util.List;
+
 public interface UmsAdminMapper {
     /**
      *
@@ -46,4 +48,19 @@ public interface UmsAdminMapper {
      * @return
      */
     int toLogin(String username,String password);
+
+    /**
+     * 查询username
+     * @param username
+     * @return
+     */
+    List<UmsAdmin> selectByUsername(String username);
+
+    /**
+     * 登录2
+     * @param username
+     * @param password
+     * @return
+     */
+    UmsAdmin login(String username,String password);
 }

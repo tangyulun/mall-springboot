@@ -156,4 +156,17 @@
     where username = #{arg0,jdbcType=VARCHAR}
     and password = #{arg1,jdbcType=VARCHAR}
   </select>
+  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select count(1)
+    <include refid="Base_Column_List" />
+    from ums_admin
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
+  <select id="login" resultMap="BaseResultMap" parameterType="com.springboot.mall.model.UmsAdmin">
+    select
+    <include refid="Base_Column_List" />
+    from ums_admin
+    where username = #{arg0,jdbcType=VARCHAR}
+    and password = #{arg1,jdbcType=VARCHAR}
+  </select>
 </mapper>

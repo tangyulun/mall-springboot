@@ -1,16 +1,19 @@
 package com.springboot.mall.service;
 
 import com.springboot.mall.dto.UmsAdminParam;
+import com.springboot.mall.dto.UmsAdminUsername;
 import com.springboot.mall.model.UmsAdmin;
+
+import java.util.List;
 
 /**
  * UmsAdminService
  */
 public interface UmsAdminService {
   /**
-   * 根据用户名获取后台管理员
+   * 查询所有username
    */
-//  UmsAdmin getAdminByUsername(String username);
+  List<UmsAdminUsername> getAdminUsername(String username);
 
   /**
    * 注册功能

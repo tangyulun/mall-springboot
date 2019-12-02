@@ -2,6 +2,7 @@ package com.springboot.mall.service.impl;
 
 import com.springboot.mall.dao.UmsAdminMapper;
 import com.springboot.mall.dto.UmsAdminParam;
+import com.springboot.mall.dto.UmsAdminUsername;
 import com.springboot.mall.model.UmsAdmin;
 import com.springboot.mall.service.UmsAdminService;
 import com.springboot.mall.utils.JwtTokenUtil;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * UmsAdminService的实现类
@@ -33,13 +35,20 @@ public class UmsAdminServiceImpl implements UmsAdminService {
   private UmsAdminMapper adminMapper;
 
   @Override
+  public List<UmsAdminUsername> getAdminUsername(String username){
+    return adminMapper.getAdminUsername(username);
+  }
+
+
+  @Override
   public UmsAdmin register(UmsAdminParam umsAdminParam){
     UmsAdmin umsAdmin = new UmsAdmin();
     BeanUtils.copyProperties(umsAdminParam,umsAdmin);
-//    List<UmsAdmin> umsAdminList = adminMapper.selectByUsername(umsAdmin.getUsername());
-//    if (umsAdmin.getUsername()!=null && umsAdminList.size()>0){
-//      return null;
-//    }
+    //判断用户名是否存在
+    List<UmsAdminUsername> umsAdminList = adminMapper.getAdminUsername(umsAdmin.getUsername());
+    if (umsAdmin.getUsername()==null || umsAdminList.size() > 0){
+      return null;
+    }
     umsAdmin.setCreateTime(new Date());
     umsAdmin.setStatus(1);
     //密码用MD5加密
@@ -58,6 +67,12 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     umsAdmin.setUsername(username);
     umsAdmin = adminMapper.login(username,password);
     return umsAdmin;
+  }
+
+
+  private void insertLoginLog(String username){
+    List<UmsAdminUsername> umsAdminList =getAdminUsername(username);
+
   }
 
 

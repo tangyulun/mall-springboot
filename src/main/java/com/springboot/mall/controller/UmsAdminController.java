@@ -31,6 +31,12 @@ public class UmsAdminController {
   @Value("${jwt.tokenHeader}")
   private String tokenHeader;
 
+  @ApiOperation(value = "查询所有用户")
+  @RequestMapping(value = "/getUsername", method = RequestMethod.POST)
+  @ResponseBody
+  public Object getAdminUsername(@RequestBody String username){
+    return new CommonResult().success(adminService.getAdminUsername(username));
+  }
   @ApiOperation(value = "用户登录")
   @RequestMapping(value = "/login", method = RequestMethod.POST)
   @ResponseBody
@@ -38,8 +44,8 @@ public class UmsAdminController {
     String username = umsAdminLoginParam.getUsername();
     String password = MD5Util.string2MD5(umsAdminLoginParam.getPassword());
     UmsAdmin adminInteger = adminService.login(username,password);
-    if (username ==null || password ==null){
-      return new CommonResult().failed();
+    if (adminInteger == null) {
+      return new CommonResult().validateFailed("用户名或密码错误，请重新输入！");
     }
     return new CommonResult().success(adminInteger);
   }
@@ -51,7 +57,7 @@ public class UmsAdminController {
   public Object register(@RequestBody UmsAdminParam umsAdminParam, BindingResult result) {
     UmsAdmin umsAdmin = adminService.register(umsAdminParam);
     if (umsAdmin == null) {
-      new CommonResult().failed();
+      return new CommonResult().validateFailed("用户名已存在！");
     }
     return new CommonResult().success(umsAdmin);
   }

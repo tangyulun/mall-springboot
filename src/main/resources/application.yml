@@ -1,9 +1,23 @@
 spring:
   profiles:
     active: dev #默认为开发环境
-jwt:
-  tokenHeader: Authorization #JWT存储的请求头
-  secret: mySecret #JWT加解密使用的密钥
-  expiration: 604800 #JWT的超期限时间(60*60*24)
-  tokenHead: Bearer  #JWT负载中拿到开头
+#jwt:
+##  tokenHeader: Authorization #JWT存储的请求头
+##  secret: mySecret #JWT加解密使用的密钥
+##  expiration: 604800 #JWT的超期限时间(60*60*24)
+##  tokenHead: Bearer  #JWT负载中拿到开头
 
+#logging:
+#  config:
+#    classpath: logback-spring.xml
+#    path: /var/log/${spring.application.name}
+#  myFileName: ${spring.application.name}
+#  # 分割文件设置 超过 100MB就进行分割，最大保留历史 15天
+#  maxFileSize: 100MB
+#  maxHistory: 15
+#  level:
+#    root: INFO
+#    org.springframework.web: INFO
+#    org.springframework.security: INFO
+#    # 自己工程命名的类
+#    com.project: DEBUG

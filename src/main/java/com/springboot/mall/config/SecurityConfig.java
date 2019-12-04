@@ -54,12 +54,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .authenticated();
     // 禁用缓存
     httpSecurity.headers().cacheControl();
-    // 添加JWT filter
-//    httpSecurity.addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-    //添加自定义未授权和未登录结果返回
-//    httpSecurity.exceptionHandling()
-//        .accessDeniedHandler(restfulAccessDeniedHandler)
-//        .authenticationEntryPoint(restAuthenticationEntryPoint);
   }
 
   @Override

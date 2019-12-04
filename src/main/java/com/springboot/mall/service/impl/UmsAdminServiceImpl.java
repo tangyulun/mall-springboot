@@ -7,14 +7,9 @@ import com.springboot.mall.dto.UmsAdminUsername;
 import com.springboot.mall.model.UmsAdmin;
 import com.springboot.mall.model.UmsAdminLoginLog;
 import com.springboot.mall.service.UmsAdminService;
-import com.springboot.mall.utils.JwtTokenUtil;
 import com.springboot.mall.utils.MD5Util;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -29,13 +24,13 @@ import java.util.List;
 @Service
 public class UmsAdminServiceImpl implements UmsAdminService {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(UmsAdminServiceImpl.class);
-  @Autowired
-  private JwtTokenUtil jwtTokenUtil;
-  @Autowired
-  private PasswordEncoder passwordEncoder;
-  @Value("${jwt.tokenHead}")
-  private String tokenHead;
+//  private static final Logger LOGGER = LoggerFactory.getLogger(UmsAdminServiceImpl.class);
+//  @Autowired
+//  private JwtTokenUtil jwtTokenUtil;
+//  @Autowired
+//  private PasswordEncoder passwordEncoder;
+//  @Value("${jwt.tokenHead}")
+//  private String tokenHead;
   @Autowired
   private UmsAdminMapper adminMapper;
   @Autowired
@@ -79,6 +74,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     return umsAdmin;
   }
 
+
   /**
    * 添加登录记录
    * @param username
@@ -96,6 +92,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     loginLogMapper.insert(umsAdminLoginLog);
   }
 
+
   /**
    * 修改最后登录登录时间
    * @param username
@@ -107,5 +104,6 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     umsAdmin.setLoginTime(new Date());
     adminMapper.updateByPrimaryKey(umsAdmin);
   }
+
 
 }

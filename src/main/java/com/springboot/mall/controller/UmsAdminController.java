@@ -37,6 +37,8 @@ public class UmsAdminController {
   public Object getAdminUsername(@RequestBody String username){
     return new CommonResult().success(adminService.getAdminUsername(username));
   }
+
+
   @ApiOperation(value = "用户登录")
   @RequestMapping(value = "/login", method = RequestMethod.POST)
   @ResponseBody
@@ -44,7 +46,8 @@ public class UmsAdminController {
     String username = umsAdminLoginParam.getUsername();
     String password = MD5Util.string2MD5(umsAdminLoginParam.getPassword());
     UmsAdmin adminInteger = adminService.login(username,password);
-    if (adminInteger == null) {
+    System.out.println(adminInteger);
+    if (adminInteger == null ) {
       return new CommonResult().validateFailed("用户名或密码错误，请重新输入！");
     }
     return new CommonResult().success(adminInteger);

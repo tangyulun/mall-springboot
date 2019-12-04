@@ -46,7 +46,6 @@ public class UmsAdminController {
     String username = umsAdminLoginParam.getUsername();
     String password = MD5Util.string2MD5(umsAdminLoginParam.getPassword());
     UmsAdmin adminInteger = adminService.login(username,password);
-    System.out.println(adminInteger);
     if (adminInteger == null ) {
       return new CommonResult().validateFailed("用户名或密码错误，请重新输入！");
     }

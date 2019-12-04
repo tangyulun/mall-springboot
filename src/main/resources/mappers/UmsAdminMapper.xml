@@ -167,7 +167,7 @@
     <include refid="Base_Column_List" />
     from ums_admin
     where username = #{username,jdbcType=VARCHAR}
-    and password = #{username,jdbcType=VARCHAR}
+    and password = #{password,jdbcType=VARCHAR}
   </select>
   <select id="getAdminUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
     select

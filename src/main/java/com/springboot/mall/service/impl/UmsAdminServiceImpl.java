@@ -69,6 +69,9 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     umsAdmin.setPassword(password);
     umsAdmin.setUsername(username);
     umsAdmin = adminMapper.login(username,password);
+    if(umsAdmin == null){
+      return umsAdmin;
+    }
     insertLoginLog(username, password);
     updateLoginTimeByUsername(username, password);
     return umsAdmin;

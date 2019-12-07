@@ -2,6 +2,7 @@ package com.springboot.mall.dao;
 
 import com.springboot.mall.model.PmsProduct;
 import com.springboot.mall.model.PmsProductWithBLOBs;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -48,6 +49,8 @@ public interface PmsProductMapper {
      */
     int updateByPrimaryKey(PmsProduct record);
 
+    List<PmsProduct> selectByIDPmsProduct(Long id);
+
     /**
      * 分页查询商品
      * @param pageNum
@@ -55,4 +58,16 @@ public interface PmsProductMapper {
      * @return
      */
     List<PmsProduct> selectAllPmsProduct(Integer pageNum, Integer pageSize);
+
+    /**
+     * 根据name分页模糊查询商品
+     * @param pageNum
+     * @param pageSize
+     * @param name
+     * @return
+     */
+    List<PmsProduct> selectByNamePmsProduct(
+        @Param("pageNum") Integer pageNum,
+        @Param("pageSize") Integer pageSize,
+        @Param("name") String name);
 }

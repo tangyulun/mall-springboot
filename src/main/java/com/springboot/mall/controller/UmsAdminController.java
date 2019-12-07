@@ -9,7 +9,6 @@ import com.springboot.mall.utils.MD5Util;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,10 +25,6 @@ public class UmsAdminController {
 
   @Autowired
   private UmsAdminService adminService;
-  @Value("${jwt.tokenHead}")
-  private String tokenHead;
-  @Value("${jwt.tokenHeader}")
-  private String tokenHeader;
 
   @ApiOperation(value = "查询所有用户")
   @RequestMapping(value = "/getUsername", method = RequestMethod.POST)
@@ -37,7 +32,6 @@ public class UmsAdminController {
   public Object getAdminUsername(@RequestBody String username){
     return new CommonResult().success(adminService.getAdminUsername(username));
   }
-
 
   @ApiOperation(value = "用户登录")
   @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -52,7 +46,6 @@ public class UmsAdminController {
     return new CommonResult().success(adminInteger);
   }
 
-
   @ApiOperation(value = "用户注册")
   @RequestMapping(value = "/register", method = RequestMethod.POST)
   @ResponseBody
@@ -63,6 +56,5 @@ public class UmsAdminController {
     }
     return new CommonResult().success(umsAdmin);
   }
-
 
 }

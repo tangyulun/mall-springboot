@@ -19,13 +19,20 @@ public class ProductServiceImpl implements ProductService {
   private PmsProductMapper pmsProductMapper;
 
   @Override
-  public List<PmsProduct> selectByPrimaryKey(Long id){
-    return null;
+  public List<PmsProduct> selectByIDPmsProduct(Long id){
+    List<PmsProduct> productList = pmsProductMapper.selectByIDPmsProduct(id);
+    return productList;
   }
   @Override
   public List<PmsProduct> list(PmsProductQueryParam productQueryParam, Integer pageNum, Integer pageSize){
     PageHelper.startPage(pageNum,pageSize);
     List<PmsProduct> productList = pmsProductMapper.selectAllPmsProduct(pageNum, pageSize);
+    return productList;
+  }
+  @Override
+  public List<PmsProduct> byNameList(Integer pageNum, Integer pageSize, String name){
+    PageHelper.startPage(pageNum,pageSize);
+    List<PmsProduct> productList = pmsProductMapper.selectByNamePmsProduct(pageNum,pageSize,name);
     return productList;
   }
 }

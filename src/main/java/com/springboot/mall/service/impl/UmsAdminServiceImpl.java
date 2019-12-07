@@ -24,13 +24,6 @@ import java.util.List;
 @Service
 public class UmsAdminServiceImpl implements UmsAdminService {
 
-//  private static final Logger LOGGER = LoggerFactory.getLogger(UmsAdminServiceImpl.class);
-//  @Autowired
-//  private JwtTokenUtil jwtTokenUtil;
-//  @Autowired
-//  private PasswordEncoder passwordEncoder;
-//  @Value("${jwt.tokenHead}")
-//  private String tokenHead;
   @Autowired
   private UmsAdminMapper adminMapper;
   @Autowired
@@ -48,7 +41,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     BeanUtils.copyProperties(umsAdminParam,umsAdmin);
     //判断用户名是否存在
     List<UmsAdminUsername> umsAdminList = adminMapper.getAdminUsername(umsAdmin.getUsername());
-    if (umsAdmin.getUsername()==null || umsAdminList.size() > 0){
+    if (umsAdmin.getUsername() == null || umsAdminList.size() > 0) {
       return null;
     }
     umsAdmin.setCreateTime(new Date());
@@ -69,7 +62,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     umsAdmin.setPassword(password);
     umsAdmin.setUsername(username);
     umsAdmin = adminMapper.login(username,password);
-    if(umsAdmin == null){
+    if (umsAdmin == null) {
       return umsAdmin;
     }
     insertLoginLog(username, password);

@@ -14,7 +14,7 @@ public interface ProductService {
    * @param id
    * @return
    */
-  List<PmsProduct> selectByPrimaryKey(Long id);
+  List<PmsProduct> selectByIDPmsProduct(Long id);
 
   /**
    * 分页查询商品
@@ -24,4 +24,13 @@ public interface ProductService {
    * @return
    */
   List<PmsProduct> list(PmsProductQueryParam productQueryParam, Integer pageNum, Integer pageSize);
+
+  /**
+   * 根据name模糊查询商品
+   * @param pageNum
+   * @param pageSize
+   * @param name
+   * @return
+   */
+  List<PmsProduct> byNameList(Integer pageNum, Integer pageSize,String name);
 }

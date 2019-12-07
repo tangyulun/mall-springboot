@@ -28,13 +28,4 @@ public interface UmsAdminService {
    */
   UmsAdmin login(String username, String password);
 
-//  /**
-//   * 获取用户所有权限（包括角色权限和+-权限）
-//   */
-//  List<UmsPermission> getPermissionList(Long adminId);
-
-//  /**
-//   * 根据用户名获取后台管理员
-//   */
-//  boolean getAdminUsername(String username);
 }

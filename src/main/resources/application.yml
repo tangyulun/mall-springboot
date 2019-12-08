@@ -21,3 +21,8 @@ spring:
 #    org.springframework.security: INFO
 #    # 自己工程命名的类
 #    com.project: DEBUG
+#
+mongodb:
+  host: localhost # mongodb的连接地址
+  port: 27017 # mongodb的连接端口号
+  database: mall-port # mongodb的连接的数据库

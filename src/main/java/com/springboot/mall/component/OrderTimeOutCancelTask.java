@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderTimeOutCancelTask {
   private Logger LOGGER = LoggerFactory.getLogger(OrderTimeOutCancelTask.class);
-  @Scheduled(cron = "0 0/10 * ? *?")
+  @Scheduled(cron = "0 0/10 * ? * ?")
   private void cancelTimeOutOrder(){
     LOGGER.info("取消订单，并根据sku编号释放锁定库存");
   }

@@ -2,6 +2,7 @@ package com.springboot.mall.dao;
 
 import com.springboot.mall.dto.UmsAdminUsername;
 import com.springboot.mall.model.UmsAdmin;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -63,7 +64,7 @@ public interface UmsAdminMapper {
      * @param password
      * @return
      */
-    UmsAdmin login(String username,String password);
+    UmsAdmin login(@Param("username") String username, @Param("password") String password);
 
     /**
      * 查询所有username

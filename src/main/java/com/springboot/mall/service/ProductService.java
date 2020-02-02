@@ -1,6 +1,5 @@
 package com.springboot.mall.service;
 
-import com.springboot.mall.dto.PmsProductQueryParam;
 import com.springboot.mall.model.PmsProduct;
 
 import java.util.List;
@@ -18,12 +17,11 @@ public interface ProductService {
 
   /**
    * 分页查询商品
-   * @param productQueryParam
    * @param pageNum
    * @param pageSize
    * @return
    */
-  List<PmsProduct> list(PmsProductQueryParam productQueryParam, Integer pageNum, Integer pageSize);
+  List<PmsProduct> list(Integer pageNum, Integer pageSize);
 
   /**
    * 根据name模糊查询商品

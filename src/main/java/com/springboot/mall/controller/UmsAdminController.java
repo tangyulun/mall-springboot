@@ -12,6 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * 后台用户管理
  */
@@ -27,6 +32,11 @@ public class UmsAdminController {
   @RequestMapping(value = "/getUsername", method = RequestMethod.POST)
   public Object getAdminUsername(@RequestParam("username") String username){
     return new CommonResult().success(adminService.getAdminUsername(username));
+  }
+  @ApiOperation(value = "根据用户名获取后台管理员")
+  @RequestMapping(value = "/selectAdminByUsername", method = RequestMethod.POST)
+  public Object selectAdminByUsername(@RequestParam("username") String username){
+    return new CommonResult().success(adminService.selectAdminByUsername(username));
   }
 
   @ApiOperation(value = "用户登录")
@@ -51,5 +61,22 @@ public class UmsAdminController {
     }
     return new CommonResult().success(umsAdmin);
   }
+  @ApiOperation(value = "获取当前登录用户信息")
+  @RequestMapping(value = "/info", method = RequestMethod.GET)
+  public Object getAdminInfo(Principal principal) {
+    String  username = principal.getName();
+    List<UmsAdmin> umsAdmin = adminService.selectAdminByUsername(username);
+    Map<String, Object> data = new HashMap<>();
+    data.put("username", umsAdmin.get(0).getUsername());
+    data.put("roles", new String[]{"TEST"});
+    data.put("icon", umsAdmin.get(0).getIcon());
+    return new CommonResult().success(data);
+  }
+  @ApiOperation(value = "登出功能")
+  @RequestMapping(value = "/logout", method = RequestMethod.POST)
+  public Object logout() {
+    return new CommonResult().success(null);
+  }
+
 
 }

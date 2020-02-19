@@ -71,4 +71,11 @@ public interface UmsAdminMapper {
      * @return
      */
     List<UmsAdminUsername> getAdminUsername(String username);
+
+    /**
+     * 根据username来查询Admin
+     * @param username
+     * @return
+     */
+    UmsAdmin selectAdminByUsername(String username);
 }

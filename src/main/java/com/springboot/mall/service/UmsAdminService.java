@@ -27,5 +27,9 @@ public interface UmsAdminService {
    * @return 生成的JWT的token
    */
   UmsAdmin login(String username, String password);
+  /**
+   * 根据用户名获取后台管理员
+   */
+  List<UmsAdmin> selectAdminByUsername(String username);
 
 }

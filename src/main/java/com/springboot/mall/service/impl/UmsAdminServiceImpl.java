@@ -69,8 +69,6 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     updateLoginTimeByUsername(username, password);
     return umsAdmin;
   }
-
-
   /**
    * 添加登录记录
    * @param username
@@ -87,8 +85,6 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     umsAdminLoginLog.setIp(request.getRemoteAddr());
     loginLogMapper.insert(umsAdminLoginLog);
   }
-
-
   /**
    * 修改最后登录登录时间
    * @param username
@@ -100,6 +96,13 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     umsAdmin.setLoginTime(new Date());
     adminMapper.updateByPrimaryKey(umsAdmin);
   }
-
+  @Override
+  public List<UmsAdmin> selectAdminByUsername(String username) {
+    List<UmsAdmin> adminList = adminMapper.selectByUsername(username);
+    if (adminList != null && adminList.size() > 0) {
+      return adminList;
+    }
+    return null;
+  }
 
 }

@@ -1,0 +1,8 @@
+{
+  "name": "mall-springboot",
+  "version": "1.0.0",
+  "dependencies": "测试页面",
+  "title": "APIDOC",
+  "url": "http://127.0.0.1:8080/",
+  "sampleUrl": "http://127.0.0.1:8080/"
+}

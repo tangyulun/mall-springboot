@@ -24,14 +24,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Autowired
   private UmsAdminService adminService;
-
   @Override
   protected void configure(HttpSecurity httpSecurity) throws Exception {
-    httpSecurity.csrf()// 由于使用的是JWT，我们这里不需要csrf
-        .disable()
+    httpSecurity.csrf().disable()
+        // 由于使用的是JWT，我们这里不需要HttpSession
         .sessionManagement()// 基于token，所以不需要session
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
+        //OPTIONS请求全部放行
         .authorizeRequests()
         .antMatchers(HttpMethod.GET, // 允许对于网站静态资源的无授权访问
             "/",
@@ -53,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .anyRequest()// 除上面外的所有请求全部需要鉴权认证
         .authenticated();
     // 禁用缓存
+    //http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
     httpSecurity.headers().cacheControl();
   }
 

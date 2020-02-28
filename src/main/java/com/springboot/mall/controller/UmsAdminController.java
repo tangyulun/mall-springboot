@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
@@ -42,13 +44,16 @@ public class UmsAdminController {
   @ApiOperation(value = "用户登录")
   @RequestMapping(value = "/login", method = RequestMethod.POST)
   @CrossOrigin
-  public Object login(@RequestBody UmsAdminLoginParam umsAdminLoginParam, BindingResult result) {
+  public Object login(@RequestBody UmsAdminLoginParam umsAdminLoginParam, HttpServletResponse response, HttpServletRequest request) {
     String username = umsAdminLoginParam.getUsername();
     String password = MD5Util.string2MD5(umsAdminLoginParam.getPassword());
     UmsAdmin adminInteger = adminService.login(username,password);
+    response.setContentType("\"text/html;charset=utf-8\"");
+    response.setCharacterEncoding("utf-8");
     if (adminInteger == null ) {
       return new CommonResult().validateFailed("用户名或密码错误，请重新输入！");
     }
+    request.getSession().setAttribute("user","username");
     return new CommonResult().success(adminInteger);
   }
 

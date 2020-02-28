@@ -15,5 +15,4 @@ public class MallSpringbootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MallSpringbootApplication.class, args);
 	}
-
 }

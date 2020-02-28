@@ -13,7 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>mall-springboot</name>
 	<description>Demo project for Spring Boot</description>
-
+	<!--<packaging>war</packaging>-->
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -160,6 +160,23 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<!-- jackson相关依赖 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-server -->
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-server</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-client -->
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+			<version>1.2.3</version>
 		</dependency>
 	</dependencies>
 

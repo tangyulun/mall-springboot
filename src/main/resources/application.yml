@@ -35,3 +35,27 @@ redis:
       authCode: "portal:authCode:"
     expire:
       authCode: 120 # 验证码超期时间
+management:
+  endpoints:
+    web:
+      exposure:
+        # 暴漏的接口 - 所有接口
+        include: "*"
+# JWT配置
+#jwt:
+#  # 密匙KEY
+#  secret: JWTSecret
+#  # HeaderKEY
+#  tokenHeader: Authorization
+#  # Token前缀字符
+#  tokenPrefix: Sans-
+#  # 过期时间 单位秒 1天后过期=86400 7天后过期=604800
+#  expiration: 86400
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mySecret #JWT加解密使用的密钥
+  expiration: 86400 #JWT的超期限时间(60*60*24)
+  tokenHead: Bearer  #JWT负载中拿到开头
+#  # 配置不需要认证的接口
+#  antMatchers: /index,/login/**,/favicon.ico
+

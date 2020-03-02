@@ -58,4 +58,7 @@ jwt:
   tokenHead: Bearer  #JWT负载中拿到开头
 #  # 配置不需要认证的接口
 #  antMatchers: /index,/login/**,/favicon.ico
+file:
+  staticAccessPath: /upload/**
+  uploadFolder: D:/FTP/
 

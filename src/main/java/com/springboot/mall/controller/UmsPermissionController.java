@@ -34,7 +34,7 @@ public class UmsPermissionController {
   public Object create(@RequestBody UmsPermission permission) {
     int count = umsPermissionService.create(permission);
     if (count>0){
-      return new CommonResult().success(count);
+      return new CommonResult().success(permission);
     }
     return new CommonResult().failed();
   }
